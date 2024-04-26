@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Draw Stuff - Login Page</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/indexLogin.js" type="module"></script>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="icon" href="icon"/>
+  </head>
+  
+  <body> 
+    <h1><img src="svg/favicon.svg">Draw Stuff.</h1>
+    <!--<a href="/canvas">Visit Canvas remove before we finish this please or else we will be utterly screwed since i dont think the code would handle thois gracefully or smthin</a>-->
+    
+    <br>
+    <form id="login" action="#">
+      <fieldset>
+        <label for="username" class="lb">Username:</label>
+        <input id="username" type="text" autocomplete="username" class="tb"/>
+
+        <label for="password" class="lb">Password:</label>
+        <input id="password" type="password" autocomplete="current-password" class="tb"/>
+        <br>
+        <div>
+          <input type="submit" value="Login" class="ib"/>
+          <input type="button" id="switch" value="Create Account" class="ib"/>
+        </div>
+        
+        <span id="message"></span>
+      </fieldset>
+    </form>
+  </body>
+</html>  
+  
+  

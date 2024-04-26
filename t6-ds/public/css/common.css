@@ -1,0 +1,7 @@
+:root {
+    background-color: #5c9fe1;
+}
+
+:root, body, input, label, h1, a, button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

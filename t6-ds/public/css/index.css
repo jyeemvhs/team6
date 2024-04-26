@@ -1,0 +1,82 @@
+:root {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+fieldset {
+    display: flex;
+    border: 2px black solid;
+    border-radius: 5px;
+    background-color: rgb(232,232,232);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ib {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px black solid;
+}
+
+.tb {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px black solid;
+}
+
+.lb {
+    margin: 2px;
+}
+
+span {
+    margin-top: 3px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 64px;
+    height: 64px;
+}
+
+
+/*
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+fieldset {
+    display: grid;
+    background-color: lightgray;
+    border: 3px black solid;
+    border-radius: 10px;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+input {
+    margin: 3px;
+    display: flex;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}*/

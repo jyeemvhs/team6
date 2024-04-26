@@ -1,0 +1,253 @@
+body {
+    display: grid;
+}
+
+button:hover {
+    opacity: 75%;
+}
+
+#topbar {
+    display: flex;
+    width: 80%;
+    justify-self: center;
+    background-color: white;
+    border: 3px black solid;
+    border-radius: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#ab-437 {
+    visibility: hidden;
+}
+
+#timer {
+    border: 5px black solid;
+    border-radius: 100%;
+    background-color: rgb(158, 158, 158);
+    margin: 3px;
+}
+
+
+#wrap {
+    display: flex;
+    grid-row: 3;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#canvasSetting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* Canvas drawing stuff */
+#canvasWrapper {
+    position: relative;
+    width: 800px;
+    height: 600px;
+}
+
+#canvasWrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 3px black solid;
+    border-radius: 1%;
+    cursor: crosshair;
+}
+
+
+#roomUI {
+    width: 820px;
+    height: 620px;
+    background-color: rgb(239, 239, 239);;
+    z-index: 5;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border: 3px black solid;
+    border-radius: 5px;
+    display: grid;
+}
+
+#roomUI ul {
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    scroll-margin-right: 5px;
+    max-height: 400px;
+    scroll-behavior: smooth;
+    background-color: white;
+}
+
+#startGame {
+    background-color: lightgreen;
+}
+
+#endGame {
+    background-color: lightcoral;
+}
+
+.manageButton {
+    border: 1px black solid;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 3px;
+}
+
+li img {
+    margin-right: 5px;
+}
+
+li button {
+    margin-left: 5px;
+}
+
+
+/* Messages */
+#chatbox {
+    border: 3px black solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 600px;
+    background-color: rgb(239, 239, 239);
+    display: flex;
+    flex-direction: column;   
+}
+
+#chatElements {
+    margin-top: auto;
+}
+
+#messages {
+    /* overflow: hidden; */
+    overflow-y: auto;
+    position: relative;
+    scroll-margin-right: 5px;
+    max-width: 300px;
+    height: 580px;
+}
+
+#messages .user {
+    color: blue;
+}
+
+#messages .update {
+    color: #4caf50;
+}
+
+#messages .error {
+    color: rgb(235, 23, 23);
+}
+
+.chatEle {
+    margin-left: 3px;
+    margin-right: 3px;
+    border: 1px black solid;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+/* Brushes and stuff */
+.cTools {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cTools button, #clear {
+    margin-left: 3px;
+    margin-right: 3px;
+    border-radius: 10px;
+    border: 2px black solid;
+    background-color: white;
+}
+
+#clear {
+    margin-top: 5px;
+}
+
+#pf-prog {
+    width: 100%;
+}
+
+.hide {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    margin: 0px;
+    position: absolute;
+}
+
+.cTools button:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+}
+
+.grayBackground {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.centerAlign {
+    display: flex;
+    align-items: center;
+}
+
+.colorWrap {
+    border: 2px black solid;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.colorWrap input[type=color] {
+    aspect-ratio: 1 / 1;
+    width: 75px;
+    height: 75px;
+    background-color: unset;
+    border: none;   
+}
+
+#colorSelect {
+    width: 60px;
+    height: 40px;
+    background-color: unset;
+    border: none; 
+}
+
+#opacity {
+    direction: rtl;
+}
+
+.colorWrap label {
+    margin: 5px;
+}
+
+.centerAlign label {
+    margin-right: 5px;
+}

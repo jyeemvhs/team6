@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Draw Stuff - Home</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="icon"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/home.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/home.js"></script>
+  </head>
+
+  <body>
+    <div id="createLobby" class="hide">
+      <button id="closeCreate">Close</button>
+
+      <form>
+        <fieldset>
+          <label for="name">Room Name:</label>
+          <input type="text" id="name" class="text" required>
+
+          <label for="max">Room Size:</label>
+          <input type="number" class="text" min="3" max="32" id="max" required>
+
+          <label for="pass">Password:</label>
+          <input type="text" class="text" id="pass">
+          <br>
+          <input type="submit" value="Create Room"/>
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="roomList" class="noblur">
+      <h1 id="welcome">Welcome</h1>
+
+      <label for="pollCheck">Auto-Refresh</label>
+      <input id="pollCheck" type="checkbox">
+  
+      <button id="refresh">Refresh</button>
+      <br>
+      <button id="create">Create Room</button>
+      <br>
+      <br>
+      <table>
+        <thead>
+          <tr>
+            <th>Room Name</th>
+            <th>Players</th>
+          </tr>
+        </thead>
+        <tbody id="roomBody">
+        </tbody>
+      </table>
+    </div>
+<!--
+
+when polling, send if this room is password protected
+
+RoomManager
+- generate room ids, and we will send these to the client
+- client will use this to know which one it wants to join
+
+on successful join, we will redirect to the canvas with the roomId=(unique id) so we know what to check for
+- valid session id
+- room exists/isnt already in progress
+- was authorized to join
+
+when joining we will add them to the list of joined users and send an update to all connected people
+
+create a check to run in 10 seconds to make sure the user actually joined this lobby and if they did dont do anything
+but if they didnt we will remove them for fail to connect
+
+we can have players who are connecting w/a connecting symbol or smthin
+
+the canvas page will have a div that blocks the canvas when joining, and itll serve as the room gui to show all users in that session
+
+
+-->
+    
+    <!--
+
+      use http polling to get the rooms, update every 5 seconds or so
+
+      creating a room is a post request to the server
+
+      if you arent logged in when accessing this page you are given an error and cannot view anything
+
+      join will send request, if password protected, show a prompt for the password and either allow in or reject if it didn't work
+
+    -->
+  </body>
+</html> 

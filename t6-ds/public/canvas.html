@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Draw Stuff - App</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1100, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!--<script>let aVeryLongVariableNameThatExplainsThatThisIsJustTheIndexForAForLoop = 1;</script>-->
+    <link rel="stylesheet" href="css/common.css"></link>
+    <link rel="stylesheet" href="css/canvas.css"></link>
+    <link rel="icon" href="icon"/>
+  </head>
+  
+  <body> 
+    <input type="file" id="upload" hidden accept="image/png image/jpeg">
+    <div id="topbar">
+      <img width="100" height="100" src="data:," id="ab-437" alt>
+
+      <h1 id="keyword">...</h1>
+
+      <canvas width="100" height="100" id="timer"></canvas>
+    </div>
+    <br>
+
+
+    <div id="wrap">
+      <div id="canvasSetting">
+        <div class="colorWrap">
+          <label for="bgColor">Background</label>
+          <input type="color" id="bgColor" value="#ffffff"></input>
+        </div>
+
+        <button id="clear">
+          <img width="100" height="100" src="svg/clearCanvas-basic.svg">
+          <br>Clear
+        </button>
+      </div>
+
+      <div id="canvasWrapper">
+        <canvas id="drawing" width="800" height="600" style="background-color: white;">Your browser does not support canvases.</canvas>
+        <canvas id="aidDrawing" width="800" height="600">Your browser does not support canvases.</canvas>
+
+        <div id="roomUI">
+          <div>
+            <p style="margin: 1rem;">Room Name Here - 0/10 Players</p>
+  
+            <ul>
+              <li>admin</li> 
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+              <hr>
+              <li><img src="img/spinner.gif"><span>Username</span><button id="kick">Kick</button><button id="ban">Ban</button></li>
+            </ul>
+          </div>
+    
+          <div style="margin: 3px; display: flex;">
+            <button id="startGame" class="manageButton">Start Game</button>
+            <button id="endGame" class="manageButton" onclick="$('#roomUI').remove()">Close Room</button>
+            
+            <!--<button id="ban">Ban</button>-->
+          </div>    
+        </div>
+      </div>
+
+      
+      <div id="chatbox">
+        <div id="messages"></div>
+        
+        <div id="chatElements">
+          <input class="chatEle" type="text" id="chatInput" maxlength="256"></input>
+          <button class="chatEle" id="msgSend">Send</input>
+        </div>
+      </div>
+    </div>
+    
+
+    <div style="margin-top: 1rem;">
+      <div class="cTools">
+        <label for="toggleFill">Fill:</label>
+        <input type="checkbox" id="toggleFill">
+
+        <button id="paintBucket" class="brushFill drawButton">
+          <svg width="50" height="50" viewBox="0 0 50 50" class="brush">
+            <path transform="scale(2.083) translate(0, 0)" d="M12.031 0c-5.064 0-9.031 3.075-9.031 7v13.253c0 1.994 3 3.747 9.029 3.747 5.94 0 8.971-1.745 8.971-3.747v-13.253c0-3.925-3.939-7-8.969-7zm0 1c4.295 0 7.686 2.437 7.943 5.612-1.501-.958-4.505-1.612-7.974-1.612-3.467 0-6.472.654-7.975 1.612.261-3.175 3.678-5.612 8.006-5.612zm.047 8.781c-2.053 0-6.489-.39-6.489-1.391 0-1.01 3.986-1.39 6.489-1.39 2.568 0 6.512.39 6.512 1.391 0 1.01-4.41 1.39-6.512 1.39zm-.049 12.219c-5.397 0-6.966-1.481-7.029-1.747v-9.508c.3.152.632.294 1 .423v5.332c0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5v-1.5c0-.552.447-1 1-1s1 .448 1 1v3c0 .552.447 1 1 1s1-.448 1-1v-4c0-.552.447-1 1-1s1 .448 1 1v.5c0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5v-3.33c.369-.129.699-.272 1-.424l.002 9.5c-.066.273-1.627 1.754-6.973 1.754z"/>
+          </svg>
+          <br>
+          Fill Tool
+          <br>
+          <progress id="pf-prog" max="1" class="hide">0%</progress>
+        </button>
+
+        <button id="treeButton" class="brushFill drawButton">
+          <svg class="brush" width="50" height="50" viewBox="0 0 50 50">
+            <!--<polyline points="0,0 1,0 1,3 2,1 1,5 3,3 2,6 4,5 0,10 -4,5 -2,6 -3,3 -1,5 -2,1 -1,3" fill="none" stroke="black" />-->
+            <polyline transform="rotate(180) scale(4.5) translate(-5.5, -10.5)" points="-1,0 1,0 1,3 2,1 1,5 3,3 2,6 4,5 0,10 -4,5 -2,6 -3,3 -1,5 -2,1 -1,3"/>
+          </svg>
+          <br>
+          Tree
+        </button>
+
+        <button id="rectButton" class="brushFill drawButton">
+          <svg class="brush" width="50" height="50" viewBox="0 0 50 50">
+            <rect x="0" y="10" width="50" height="30" rx="2"/>
+          </svg>
+          <br>
+          Rectangle
+        </button>
+		
+		    <button id="circleButton" class="brushFill drawButton">
+          <svg class="brush" width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="26" r="23" />
+          </svg>
+          <br>
+          Circle
+        </button>
+
+        <button id="lineButton" class="brushFill drawButton">
+          <svg class="brush" width="50" height="50" viewBox="0 0 50 50">
+            <line x1="5" y1="5" x2="45" y2="45" stroke="black"/>
+          </svg>
+          <br>
+          Line
+        </button>
+
+        <button id="standard" disabled>
+
+          <img src="svg/paintbrush.svg" id="paintImg" width="50" height="50">
+          <br>
+          Brush
+        </button>
+
+        <button id="eraser">
+          <img src="svg/eraser.svg" id="eraserImg" width="50" height="50">
+          <br>
+          Eraser
+        </button>
+      </div>
+<br>
+      <div class="cTools">
+        <div id="brushDiv" class="centerAlign grayBackground">
+          <svg class="brush" width="50" height="50" viewBox="0 0 100 100">
+            <circle cx="50" cy="52" r="5" />
+          </svg>
+
+          <input type="range" id="bSize" min="5" max="35" value="15" step="1"></input>
+
+          <svg class="brush" width="50" height="50" viewBox="0 0 100 100">
+            <circle cx="50" cy="52" r="35" />
+          </svg>
+
+          <input type="range" id="opacity" min="0.25" max="1" value="1" step=".05"></input>
+
+          <svg class="brush" width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="15" opacity="0.25"/>
+          </svg>
+
+          <hr>
+          
+          <div class="centerAlign">
+            <!--<button id="cPicker">Color Picker</button>-->
+            <input type="color" id="colorSelect"></input>
+            <label for="colorSelect">Color</label>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+    
+    <script src="js/canvas.js" type="module"></script>
+  </body>
+</html>  
+  
+  

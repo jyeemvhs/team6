@@ -1,0 +1,59 @@
+table, tbody, tr, th, td {
+    border: 1px black solid;
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.noscroll {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+button {
+    border: 1px solid black;
+    background-color: white;
+}
+
+.text {
+    border: 2px black solid;
+    border-radius: 3px;
+}
+
+#createLobby {
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    border-radius: 5px;
+    border: 2px black solid;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: lightgray;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+fieldset {
+    width: 50%;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: none;
+}
+
+#closeCreate {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+}
